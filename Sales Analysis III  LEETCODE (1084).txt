@@ -1,0 +1,8 @@
+SELECT
+  Product.product_id,
+  Product.product_name
+FROM Product
+JOIN Sales USING (product_id)
+GROUP BY Product.product_id, Product.product_name
+HAVING
+  SUM(sale_date < '2019-01-01' OR sale_date > '2019-03-31') = 0;
